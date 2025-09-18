@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YTube 廣告攔截器專業版 - 免費 YouTube 廣告攔截器和音樂下載器</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .fake-progress {
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        .blink {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-4 shadow-lg">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <i class="fab fa-youtube text-3xl text-red-400"></i>
+                <h1 class="text-2xl font-bold">YTube 廣告攔截器專業版</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-sm bg-green-500 px-3 py-1 rounded-full">✓ 無病毒</span>
+                <span class="text-sm bg-blue-500 px-3 py-1 rounded-full">4.9★ 評分</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6">永久阻擋所有 YouTube 廣告！</h2>
+            <p class="text-xl mb-8">下載音樂、阻擋廣告，享受無干擾的 YouTube 體驗</p>
+            <div class="flex justify-center space-x-4 mb-8">
+                <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                    <i class="fas fa-shield-alt text-3xl mb-2"></i>
+                    <p class="text-sm">100% 安全</p>
+                </div>
+                <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                    <i class="fas fa-download text-3xl mb-2"></i>
+                    <p class="text-sm">即時下載</p>
+                </div>
+                <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                    <i class="fas fa-music text-3xl mb-2"></i>
+                    <p class="text-sm">MP3 轉換器</p>
+                </div>
+            </div>
+            
+            <!-- Fake Download Counter -->
+            <div class="bg-red-600 text-white px-6 py-3 rounded-lg inline-block mb-6">
+                <i class="fas fa-fire"></i> 
+                今日已有 <span id="downloadCounter">1,247,892</span> 人次下載！
+            </div>
+            
+            <!-- Main Download Button -->
+            <button id="mainDownload" class="bg-green-500 hover:bg-green-600 text-white text-2xl font-bold py-6 px-12 rounded-lg pulse-animation shadow-2xl transform transition hover:scale-105">
+                <i class="fas fa-download mr-3"></i>
+                立即免費下載
+            </button>
+            
+            <p class="text-sm mt-4 opacity-75">⚡ 限時優惠 - 下載將於 <span id="countdown" class="font-bold text-yellow-300">14:59</span> 後過期</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">為什麼選擇 YTube 廣告攔截器專業版？</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6 border border-gray-200 rounded-lg hover:shadow-lg transition">
+                    <i class="fas fa-ban text-4xl text-red-500 mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">阻擋所有廣告</h4>
+                    <p class="text-gray-600">永久移除所有 YouTube 廣告</p>
+                </div>
+                <div class="text-center p-6 border border-gray-200 rounded-lg hover:shadow-lg transition">
+                    <i class="fas fa-headphones text-4xl text-blue-500 mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">下載音樂</h4>
+                    <p class="text-gray-600">轉換並下載任何 YouTube 影片為 MP3</p>
+                </div>
+                <div class="text-center p-6 border border-gray-200 rounded-lg hover:shadow-lg transition">
+                    <i class="fas fa-bolt text-4xl text-yellow-500 mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">閃電般快速</h4>
+                    <p class="text-gray-600">即時安裝，立即見效</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials (Fake) -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">用戶好評推薦</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">王</div>
+                        <div class="ml-3">
+                            <p class="font-bold">王大明</p>
+                            <div class="text-yellow-400">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"太神奇了！再也沒有煩人的 YouTube 廣告，幾分鐘就下載完整個播放清單！"</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold">陳</div>
+                        <div class="ml-3">
+                            <p class="font-bold">陳小美</p>
+                            <div class="text-yellow-400">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"史上最棒的 YouTube 下載器！超級快速而且完全免費，強烈推薦！"</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">李</div>
+                        <div class="ml-3">
+                            <p class="font-bold">李志強</p>
+                            <div class="text-yellow-400">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"完美運作！終於可以享受無干擾的 YouTube 體驗。五顆星！"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secondary Download Section -->
+    <section class="py-16 bg-red-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-3xl font-bold mb-6">別錯過機會！</h3>
+            <p class="text-xl mb-8">加入全球數百萬滿意用戶的行列</p>
+            
+            <!-- Multiple fake download buttons -->
+            <div class="space-y-4">
+                <button class="fake-download bg-green-500 hover:bg-green-600 text-white text-xl font-bold py-4 px-8 rounded-lg w-full max-w-md mx-auto block transform transition hover:scale-105">
+                    <i class="fas fa-download mr-3"></i>
+                    Windows 版下載
+                </button>
+                <button class="fake-download bg-blue-500 hover:bg-blue-600 text-white text-xl font-bold py-4 px-8 rounded-lg w-full max-w-md mx-auto block transform transition hover:scale-105">
+                    <i class="fab fa-apple mr-3"></i>
+                    Mac 版下載
+                </button>
+                <button class="fake-download bg-purple-500 hover:bg-purple-600 text-white text-xl font-bold py-4 px-8 rounded-lg w-full max-w-md mx-auto block transform transition hover:scale-105">
+                    <i class="fab fa-android mr-3"></i>
+                    Android 版下載
+                </button>
+            </div>
+            
+            <p class="text-sm mt-6 opacity-75">
+                <span class="blink">🔥</span> 
+                過去一小時內已有超過 10,000 人下載！
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm opacity-75">© 2024 樂善堂梁銶琚書院 - 版權所有</p>
+        </div>
+    </footer>
+
+    <!-- Educational Warning Modal -->
+    <div id="warningModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-2xl max-w-2xl w-full mx-4 max-h-screen overflow-y-auto">
+            <div class="text-center mb-6">
+                <i class="fas fa-exclamation-triangle text-6xl text-red-500 mb-4"></i>
+                <h2 class="text-3xl font-bold text-red-600 mb-2">⚠️ 教育警告 ⚠️</h2>
+                <p class="text-lg text-gray-700 dark:text-gray-300">這是一個惡意網站的示範！</p>
+            </div>
+            
+            <div class="bg-red-50 dark:bg-red-900 border border-red-200 rounded-lg p-6 mb-6">
+                <h3 class="text-xl font-bold text-red-800 dark:text-red-200 mb-3">🚨 您剛才體驗到的詐騙手法：</h3>
+                <ul class="text-sm text-red-700 dark:text-red-300 space-y-2 list-disc list-inside">
+                    <li><strong>虛假緊迫感：</strong>「限時優惠」和倒數計時器</li>
+                    <li><strong>虛假社會證明：</strong>假的下載數量和用戶評價</li>
+                    <li><strong>多個下載按鈕：</strong>讓用戶混淆哪個是真的</li>
+                    <li><strong>過於美好的承諾：</strong>「免費」、「即時」、「永久無廣告」</li>
+                    <li><strong>專業外觀：</strong>模仿合法軟體網站的設計</li>
+                    <li><strong>信任符號：</strong>「無病毒」標章和星級評分</li>
+                </ul>
+            </div>
+            
+            <div class="bg-blue-50 dark:bg-blue-900 border border-blue-200 rounded-lg p-6 mb-6">
+                <h3 class="text-xl font-bold text-blue-800 dark:text-blue-200 mb-3">🛡️ 如何保護自己：</h3>
+                <ul class="text-sm text-blue-700 dark:text-blue-300 space-y-2 list-disc list-inside">
+                    <li>絕不從可疑網站下載軟體</li>
+                    <li>使用 Chrome/Firefox 官方擴充商店的正版擴充功能</li>
+                    <li>對「過於美好」的承諾保持懷疑</li>
+                    <li>仔細檢查網址（注意拼寫錯誤或奇怪的域名）</li>
+                    <li>真正的廣告攔截器如 uBlock Origin 是免費的，不需要下載</li>
+                    <li>絕不相信倒數計時器或「限時」壓力策略</li>
+                </ul>
+            </div>
+            
+            <div class="bg-yellow-50 dark:bg-yellow-900 border border-yellow-200 rounded-lg p-6 mb-6">
+                <h3 class="text-xl font-bold text-yellow-800 dark:text-yellow-200 mb-3">📚 教育目的：</h3>
+                <p class="text-sm text-yellow-700 dark:text-yellow-300">
+                    此示範網站是為了提高網路安全威脅的認知而創建。
+                    真正的惡意網站可能會安裝惡意軟體、竊取個人資訊，
+                    或欺騙用戶為免費軟體付費。請務必通過官方管道驗證軟體的真實性。
+                </p>
+            </div>
+            
+            <div class="text-center">
+                <button onclick="closeModal()" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg">
+                    我了解了 - 關閉示範
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fake Download Progress Modal -->
+    <div id="progressModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-40 hidden">
+        <div class="bg-white p-8 rounded-lg shadow-2xl max-w-md w-full mx-4">
+            <h3 class="text-xl font-bold mb-4 text-center">正在下載 YTube 廣告攔截器專業版...</h3>
+            <div class="w-full bg-gray-200 rounded-full h-4 mb-4">
+                <div id="progressBar" class="fake-progress bg-green-500 h-4 rounded-full"></div>
+            </div>
+            <p id="progressText" class="text-center text-gray-600">正在初始化下載...</p>
+        </div>
+    </div>
+
+    <script>
+        // Dark mode support
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Fake dynamic elements
+        let downloadCount = 1247892;
+        let countdownMinutes = 14;
+        let countdownSeconds = 59;
+
+        // Update download counter
+        setInterval(() => {
+            downloadCount += Math.floor(Math.random() * 10) + 1;
+            document.getElementById('downloadCounter').textContent = downloadCount.toLocaleString();
+        }, 3000);
+
+        // Update countdown timer
+        setInterval(() => {
+            countdownSeconds--;
+            if (countdownSeconds < 0) {
+                countdownSeconds = 59;
+                countdownMinutes--;
+                if (countdownMinutes < 0) {
+                    countdownMinutes = 14;
+                }
+            }
+            document.getElementById('countdown').textContent = 
+                `${countdownMinutes}:${countdownSeconds.toString().padStart(2, '0')}`;
+        }, 1000);
+
+        // Show educational warning when download buttons are clicked
+        function showWarning() {
+            document.getElementById('warningModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('warningModal').classList.add('hidden');
+            document.getElementById('progressModal').classList.add('hidden');
+        }
+
+        // Function to create and download the cybersecurity education file
+        function downloadEducationFile() {
+            const educationContent = `網路安全防護指南 - 如何避免網路犯罪
+
+📋 重要提醒：您剛才體驗的是一個教育示範網站，展示了常見的惡意軟體下載詐騙手法。
+
+⚠️ 常見的詐騙網站特徵：
+
+1. 【虛假緊迫感】
+   - 使用倒數計時器製造壓力
+   - 聲稱「限時優惠」或「即將到期」
+   - 催促用戶立即行動
+
+2. 【虛假社會證明】
+   - 假造的下載數量統計
+   - 虛假的用戶評價和推薦
+   - 偽造的評分和認證標章
+
+3. 【過於美好的承諾】
+   - 聲稱完全免費但功能強大
+   - 承諾「永久」或「終身」服務
+   - 宣稱「無風險」或「100% 安全」
+
+4. 【混淆視聽的設計】
+   - 多個下載按鈕讓用戶困惑
+   - 模仿知名軟體的介面設計
+   - 使用專業外觀掩蓋惡意意圖
+
+🛡️ 保護自己的方法：
+
+1. 【謹慎下載軟體】
+   - 只從官方網站或應用商店下載軟體
+   - 避免從搜尋結果中的可疑網站下載
+   - 檢查網址是否正確，注意拼寫錯誤
+
+2. 【使用正版擴充功能】
+   - Chrome：從 Chrome 線上應用程式商店下載
+   - Firefox：從 Firefox 附加元件商店下載
+   - Edge：從 Microsoft Edge 附加元件商店下載
+
+3. 【辨識詐騙手法】
+   - 對倒數計時器和緊急訊息保持懷疑
+   - 不相信過於誇大的承諾
+   - 注意語法錯誤和翻譯問題
+
+4. 【安全瀏覽習慣】
+   - 使用最新版本的瀏覽器
+   - 開啟瀏覽器的安全功能
+   - 定期更新防毒軟體
+
+📚 關於廣告攔截器的正確資訊：
+
+✅ 合法免費的廣告攔截器：
+- uBlock Origin（推薦）
+- AdBlock Plus
+- Ghostery
+- Privacy Badger
+
+❌ 警告標誌：
+- 需要下載 .exe 檔案的「廣告攔截器」
+- 要求提供個人資訊或付款資訊
+- 聲稱能下載 YouTube 音樂為 MP3
+
+🚨 如果您已經下載了可疑軟體：
+
+1. 立即斷開網路連線
+2. 執行完整的防毒掃描
+3. 檢查瀏覽器是否被安裝了可疑擴充功能
+4. 考慮尋求專業技術支援
+5. 更改重要帳戶的密碼
+
+💡 記住：
+真正的廣告攔截器不需要下載任何程式到您的電腦。它們是瀏覽器擴充功能，可以直接從官方商店安裝。
+
+如果某個網站聲稱提供「免費下載」但要求下載 .exe 檔案，那很可能是惡意軟體。
+
+🔗 更多資訊：
+- 台灣電腦網路危機處理暨協調中心：https://www.twcert.org.tw/
+- 行政院資通安全處：https://www.nccst.nat.gov.tw/
+
+請將此檔案分享給親友，提高大家的網路安全意識！
+
+---
+此檔案由網路安全教育示範網站產生
+目的：提高民眾對網路詐騙的警覺性
+日期：${new Date().toLocaleDateString('zh-TW')}`;
+
+            // Create blob and download
+            const blob = new Blob([educationContent], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '網路安全防護指南.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Fake download progress with actual file download
+        function startFakeDownload() {
+            document.getElementById('progressModal').classList.remove('hidden');
+            let progress = 0;
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            
+            const progressMessages = [
+                "正在初始化下載...",
+                "正在連接伺服器...",
+                "正在下載 YTubeAdBlockPro.exe...",
+                "正在驗證檔案完整性...",
+                "即將完成..."
+            ];
+            
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress >= 100) {
+                    progress = 100;
+                    progressBar.style.width = '100%';
+                    progressText.textContent = "下載完成！";
+                    clearInterval(interval);
+                    
+                    // Actually download the education file
+                    downloadEducationFile();
+                    
+                    setTimeout(() => {
+                        document.getElementById('progressModal').classList.add('hidden');
+                        showWarning();
+                    }, 1000);
+                } else {
+                    progressBar.style.width = progress + '%';
+                    const messageIndex = Math.floor((progress / 100) * progressMessages.length);
+                    progressText.textContent = progressMessages[Math.min(messageIndex, progressMessages.length - 1)];
+                }
+            }, 500);
+        }
+
+        // Add event listeners
+        document.getElementById('mainDownload').addEventListener('click', startFakeDownload);
+        
+        document.querySelectorAll('.fake-download').forEach(button => {
+            button.addEventListener('click', startFakeDownload);
+        });
+
+        // Prevent right-click and F12 (common on malicious sites)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showWarning();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+                e.preventDefault();
+                showWarning();
+            }
+        });
+    </script>
+</body>
+</html>
